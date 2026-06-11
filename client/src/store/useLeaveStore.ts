@@ -30,7 +30,7 @@ function getErrorMessage(error: unknown): string {
   }
 
   if (error.code === "ERR_NETWORK") {
-    return "Cannot reach server. Run: cd server && npm start";
+    return "Cannot reach server.";
   }
 
   const data = error.response?.data as {
@@ -44,7 +44,7 @@ function getErrorMessage(error: unknown): string {
 
   const typeError = data?.error?.fieldErrors?.type?.[0];
   if (typeError?.includes("Invalid option")) {
-    return "Server is outdated — stop it (Ctrl+C) and run: cd server && npm start";
+    return "Server is outdated";
   }
 
   if (error.response?.status === 400) {
