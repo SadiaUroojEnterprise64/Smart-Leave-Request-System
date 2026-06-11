@@ -1,0 +1,13 @@
+---
+description: Backend conventions for Express API
+globs: server/**/*
+alwaysApply: false
+---
+
+# Backend Rules
+
+- Validate all APIs using Zod
+- Follow REST conventions
+- Keep controllers clean
+- No logic inside routes
+- Always handle errors properly

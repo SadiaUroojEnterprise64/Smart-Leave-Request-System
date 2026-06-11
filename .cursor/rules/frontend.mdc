@@ -1,0 +1,15 @@
+---
+description: Frontend conventions for React client
+globs: client/**/*
+alwaysApply: false
+---
+
+# Frontend Rules
+
+- Use TypeScript strictly
+- Use Ant Design components only
+- Use Zustand for state (no Redux)
+- Validate forms with Zod
+- Keep components small and reusable
+- Avoid business logic inside JSX
+- Use hooks for side effects
