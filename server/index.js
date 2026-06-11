@@ -34,6 +34,10 @@ const statusSchema = z.object({
   status: z.enum(["approved", "rejected"]),
 });
 
+app.get("/", (_req, res) => {
+  res.json({ status: "ok", message: "Leave API is running" });
+});
+
 // GET /leaves — return all leave requests
 app.get("/leaves", (_req, res) => {
   res.json(leaves);
@@ -78,8 +82,14 @@ app.put("/leaves/:id", (req, res) => {
   res.json(leave);
 });
 
-const PORT = 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-  console.log(`Leave types: ${LEAVE_TYPES.join(", ")}`);
-});
+// Vercel runs this file as a serverless function — export the app, don't only listen.
+module.exports = app;
+
+// Local development only
+if (require.main === module) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Leave types: ${LEAVE_TYPES.join(", ")}`);
+  });
+}
