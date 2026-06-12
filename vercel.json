@@ -3,14 +3,14 @@
   "buildCommand": "npm run build --prefix client",
   "outputDirectory": "client/dist",
   "functions": {
-    "server/index.js": {
+    "api/index.js": {
       "memory": 1024,
       "maxDuration": 10
     }
   },
   "rewrites": [
-    { "source": "/leaves", "destination": "/server/index.js" },
-    { "source": "/leaves/:path*", "destination": "/server/index.js" },
+    { "source": "/leaves", "destination": "/api" },
+    { "source": "/leaves/:path*", "destination": "/api" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
